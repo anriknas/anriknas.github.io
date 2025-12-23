@@ -4,34 +4,117 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sankirna Joshi</title>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: radial-gradient(circle, #0f0c29, #302b63, #24243e);
+            color: white;
+            text-align: center;
+            overflow: hidden;
+        }
+        .container {
+            position: relative;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+        img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 3px solid white;
+        }
+        a {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background: #ff0080;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        a:hover {
+            background: #d40060;
+        }
+        .background-animation {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+        .circle {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: rgba(173, 216, 230, 0.6);
+            border-radius: 50%;
+            animation: move 10s infinite alternate ease-in-out;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(173, 216, 230, 0.8);
+        }
+        @keyframes move {
+            from {
+                transform: translateY(0px);
+            }
+            to {
+                transform: translateY(100px);
+            }
+        }
+        .location {
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .location img {
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+        }
+    </style>
 </head>
 <body>
-
-    <header class="header">
-        <nav class="container nav-container">
-            <div class="logo">Sankirna Joshi</div>
-            <ul class="nav-links">
-                <li><a href="/">Home</a></li>
-                </ul>
-        </nav>
-    </header>
-
-    <main class="container main-content">
-        <section class="hero">
-            <h1>Hi, I'm Sankirna.</h1>
-            <p>I am a product professional building digital experiences.</p>
-            <div class="social-links">
-                <a href="http://www.linkedin.com/in/sankirna" target="_blank">LinkedIn</a>
-                <a href="https://github.com/anriknas" target="_blank">GitHub</a>
-            </div>
-        </section>
-    </main>
-
-    <footer class="container">
-        <p>&copy; 2024 Sankirna Joshi</p>
-    </footer>
-
+    <div class="background-animation" id="background">
+        <div class="circle" style="top: 10%; left: 20%; animation-duration: 6s;"></div>
+        <div class="circle" style="top: 50%; left: 70%; animation-duration: 8s;"></div>
+        <div class="circle" style="top: 30%; left: 40%; animation-duration: 10s;"></div>
+        <div class="circle" style="top: 80%; left: 10%; animation-duration: 12s;"></div>
+    </div>
+    <div class="container">
+        <img src="/assets/images/profile-image.png" alt="Your Name">
+        <h1>Sankirna Joshi</h1>
+        <p>Data Science Professional | Passionate about AI & Analytics</p>
+        <div class="location">
+            <img src="/assets/images/location-icon.png" alt="Location">
+            <span>Seattle, WA</span>
+        </div>
+        <a href="https://www.linkedin.com/in/sankirna" target="_blank">Connect with me on LinkedIn</a>
+    </div>
+    <script>
+        document.querySelectorAll('.circle').forEach(circle => {
+            circle.addEventListener('click', function() {
+                this.style.display = 'none';
+                for (let i = 0; i < 3; i++) {
+                    let smallBubble = document.createElement('div');
+                    smallBubble.classList.add('circle');
+                    smallBubble.style.width = '15px';
+                    smallBubble.style.height = '15px';
+                    smallBubble.style.top = (parseInt(this.style.top) + Math.random() * 20 - 10) + '%';
+                    smallBubble.style.left = (parseInt(this.style.left) + Math.random() * 20 - 10) + '%';
+                    document.getElementById('background').appendChild(smallBubble);
+                }
+            });
+        }); 
+    </script>
 </body>
 </html>
