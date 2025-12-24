@@ -302,7 +302,7 @@
                     </svg>
                 </a>
             </div>
-            <a href="/assets/Sankirna_Joshi_Resume.pdf" target="_blank" class="btn-resume">Resume</a>
+            <a href="/s/Sankirna_Joshi_Resume.pdf" target="_blank" class="btn-resume">Resume</a>
         </div>
     </header>
 
@@ -370,7 +370,7 @@
         <div class="lightbox-content">
             <button class="lightbox-close" onclick="closeContactForm()">&times;</button>
             <h2 style="margin-bottom: 2rem;">Contact Me</h2>
-            <form class="contact-form" onsubmit="handleSubmit(event)">
+            <form class="contact-form" action="https://formspree.io/f/sankirna1292@gmail.com" method="POST">
                 <div class="form-group">
                     <label for="name">Name <span style="color: red;">*</span></label>
                     <input type="text" id="name" name="name" required>
@@ -389,6 +389,9 @@
                 </div>
                 <button type="submit" class="btn-submit">Submit</button>
             </form>
+            <div id="form-success" style="display: none; margin-top: 1rem; padding: 1rem; background: #d4edda; color: #155724; border-radius: 4px;">
+                Thank you! Your message has been sent successfully.
+            </div>
         </div>
     </div>
 
@@ -416,10 +419,13 @@
             document.getElementById('contactLightbox').classList.remove('active');
         }
 
-        function handleSubmit(event) {
-            event.preventDefault();
-            alert('Thank you! Note: This is a demo form. To make it functional, you\'ll need to connect it to a backend service like Formspree, Netlify Forms, or your own server.');
-            closeContactForm();
+        // Handle form submission success
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('success') === 'true') {
+            document.getElementById('form-success').style.display = 'block';
+            setTimeout(() => {
+                closeContactForm();
+            }, 3000);
         }
 
         // Close lightbox on outside click
