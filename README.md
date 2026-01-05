@@ -1,2 +1,2 @@
-# [sankirna.com](https://www.sankirna.com)
+# <https://sankirna.com>
 An eponymous domain
